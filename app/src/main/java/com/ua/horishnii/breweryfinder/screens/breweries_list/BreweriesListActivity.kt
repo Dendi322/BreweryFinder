@@ -9,11 +9,9 @@ import com.ua.horishnii.breweryfinder.api.pojo.BreweryPojo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 
 class BreweriesListActivity : AppCompatActivity() {
-    companion object {
-        const val TAG = "BreweriesListActivity"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,12 +21,12 @@ class BreweriesListActivity : AppCompatActivity() {
             ?.enqueue(object : Callback<List<BreweryPojo>> {
 
                 override fun onFailure(call: Call<List<BreweryPojo>>, t: Throwable) {
-                    Log.d(TAG, "error" + t.localizedMessage)
+                    Timber.d(t)
                 }
 
                 override fun onResponse(call: Call<List<BreweryPojo>>, response: Response<List<BreweryPojo>>) {
                     response.body()?.forEach {
-                        Log.d(TAG, "response $it")
+                        Timber.d( "response $it")
                     }
                 }
             })

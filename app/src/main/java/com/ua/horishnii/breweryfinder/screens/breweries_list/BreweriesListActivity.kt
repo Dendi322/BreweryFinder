@@ -1,14 +1,11 @@
 package com.ua.horishnii.breweryfinder.screens.breweries_list
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.ua.horishnii.breweryfinder.BreweryFinderApp
+import androidx.lifecycle.Observer
 import com.ua.horishnii.breweryfinder.R
-import com.ua.horishnii.breweryfinder.api.pojo.BreweryPojo
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.ua.horishnii.breweryfinder.db.Brewery
+import com.ua.horishnii.breweryfinder.repositories.BreweryRepository
 import timber.log.Timber
 
 class BreweriesListActivity : AppCompatActivity() {
@@ -16,19 +13,9 @@ class BreweriesListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_breweries_list)
+        BreweryRepository.syncBreweriesListWithApi()
+        BreweryRepository.getBreweriesLiveData().observe(this,
+            Observer<List<Brewery>> { t -> t?.forEach { Timber.d("on Activity%s", it.toString()) } })
 
-        BreweryFinderApp.sOpenBreweryApi?.getBreweries()
-            ?.enqueue(object : Callback<List<BreweryPojo>> {
-
-                override fun onFailure(call: Call<List<BreweryPojo>>, t: Throwable) {
-                    Timber.d(t)
-                }
-
-                override fun onResponse(call: Call<List<BreweryPojo>>, response: Response<List<BreweryPojo>>) {
-                    response.body()?.forEach {
-                        Timber.d( "response $it")
-                    }
-                }
-            })
     }
 }

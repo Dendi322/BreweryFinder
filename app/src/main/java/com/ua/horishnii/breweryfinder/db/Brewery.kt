@@ -1,12 +1,10 @@
 package com.ua.horishnii.breweryfinder.db
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 
 @Entity(tableName = "brewery")
-data class Brewery (
+data class Brewery(
 
     @PrimaryKey
     var id: Int? = null,
@@ -49,4 +47,19 @@ data class Brewery (
 
     @ColumnInfo(name = "tagList")
     var tagList: List<String?>? = null
+
 )
+
+public class TagListConverters {
+    val separator = " "
+
+    @TypeConverter
+    fun fromTag(tagList: List<String?>): String {
+        return tagList.joinToString(separator)
+    }
+
+    @TypeConverter
+    fun toTag(data: String): List<String> {
+        return data.split(separator)
+    }
+}

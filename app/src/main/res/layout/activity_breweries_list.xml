@@ -29,12 +29,12 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:layout_margin="7dp"
             android:background="@drawable/editext_background_rounded"
             android:gravity="center"
             android:hint="Search"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
     </FrameLayout>
 
     <FrameLayout

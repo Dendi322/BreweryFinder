@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".screens.breweries_list.BreweriesListActivity">
 
@@ -13,16 +13,14 @@
         android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:paddingVertical="15dp"
-        android:text="Breweries"
+        android:text="@string/title_activity_breweries_list"
         android:textColor="@android:color/white"
-        android:textSize="22sp">
-    </TextView>
+        android:textSize="22sp" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#267602">
-    </FrameLayout>
+        android:background="#267602" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -33,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
-            android:background="@drawable/editext_rounded"
+            android:background="@drawable/editext_background_rounded"
             android:gravity="center"
             android:hint="Search"
             android:textSize="20sp" />
@@ -56,6 +54,5 @@
             android:layout_gravity="bottom|end"
             android:src="@drawable/beerman" />
     </FrameLayout>
-
 
 </LinearLayout>

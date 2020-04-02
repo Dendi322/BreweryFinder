@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/textview_background_border_rounded_corners"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBreweryInfoMainText"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!--Maybe better use ListView, but I think in this case
+    duplicated layouts is better and simpler then ListView inside recyclerView-->
+    <LinearLayout
+        android:id="@+id/linear_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_phone_title"
+            style="@style/TextViewBreweryParamName"
+            android:layout_height="wrap_content"
+            android:text="@string/title_brewery_phone" />
+
+        <TextView
+            android:id="@+id/text_phone_value"
+            style="@style/TextViewBreweryParamValue"
+            android:autoLink="phone" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_website_title"
+            style="@style/TextViewBreweryParamName"
+            android:text="@string/title_brewery_website" />
+
+        <TextView
+            android:id="@+id/text_website_value"
+            style="@style/TextViewBreweryParamValue"
+            android:autoLink="web" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_country_title"
+            style="@style/TextViewBreweryParamName"
+            android:text="@string/title_brewery_country" />
+
+        <TextView
+            android:id="@+id/text_country_value"
+            style="@style/TextViewBreweryParamValue" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_state_title"
+            style="@style/TextViewBreweryParamName"
+            android:text="@string/title_brewery_state" />
+
+        <TextView
+            android:id="@+id/text_state_value"
+            style="@style/TextViewBreweryParamValue" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_city_title"
+            style="@style/TextViewBreweryParamName"
+            android:text="@string/title_brewery_city" />
+
+        <TextView
+            android:id="@+id/text_city_value"
+            style="@style/TextViewBreweryParamValue" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_street"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_street_title"
+            style="@style/TextViewBreweryParamName"
+            android:text="@string/title_brewery_street" />
+
+        <TextView
+            android:id="@+id/text_street_value"
+            style="@style/TextViewBreweryParamValue" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_show_on_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_show_on_map"
+        android:background="@drawable/btn_background_rounded_corners"
+        android:padding="10dp"/>
+
+</LinearLayout>

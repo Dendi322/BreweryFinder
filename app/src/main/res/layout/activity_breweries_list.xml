@@ -16,8 +16,13 @@
         android:text="Breweries"
         android:textColor="@android:color/white"
         android:textSize="22sp">
-
     </TextView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#267602">
+    </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -27,11 +32,11 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="7dp"
             android:background="@drawable/editext_rounded"
             android:gravity="center"
             android:hint="Search"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
     </FrameLayout>
 
     <FrameLayout

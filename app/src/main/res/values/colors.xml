@@ -3,4 +3,6 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#2d8802</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorBreweryInfoMainText">#454545</color>
+    <color name="colorBreweryInfoParamName">#8b8b8b</color>
 </resources>

@@ -3,12 +3,12 @@
 
     <string name="title_activity_breweries_list">Breweries</string>
 
-    <string name="title_brewery_phone">Phone: </string>
-    <string name="title_brewery_website">Website: </string>
-    <string name="title_brewery_country">Country: </string>
-    <string name="title_brewery_state">State: </string>
-    <string name="title_brewery_city">City: </string>
-    <string name="title_brewery_street">Street:  </string>
+    <string name="title_brewery_phone">Phone:</string>
+    <string name="title_brewery_website">Website:</string>
+    <string name="title_brewery_country">Country:</string>
+    <string name="title_brewery_state">State:</string>
+    <string name="title_brewery_city">City:</string>
+    <string name="title_brewery_street">Street:</string>
 
     <string name="btn_show_on_map">Show on map</string>
 

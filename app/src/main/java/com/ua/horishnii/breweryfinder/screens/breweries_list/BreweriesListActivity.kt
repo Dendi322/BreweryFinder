@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ua.horishnii.breweryfinder.R
-import com.ua.horishnii.breweryfinder.db.Brewery
 import kotlinx.android.synthetic.main.activity_breweries_list.*
 import timber.log.Timber
 

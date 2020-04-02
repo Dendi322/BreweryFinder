@@ -11,6 +11,6 @@ interface BreweryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(breweriesList: List<Brewery?>?)
 
-    @Query("SELECT * FROM brewery ORDER BY name DESC")
+    @Query("SELECT * FROM brewery ORDER BY name")
     fun getBreweriesLiveData(): LiveData<List<Brewery>>
 }

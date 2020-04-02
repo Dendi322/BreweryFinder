@@ -2,6 +2,7 @@
     <string name="app_name">Brewery Finder</string>
 
     <string name="title_activity_breweries_list">Breweries</string>
+    <string name="hint_search">Search</string>
 
     <string name="title_brewery_phone">Phone:</string>
     <string name="title_brewery_website">Website:</string>

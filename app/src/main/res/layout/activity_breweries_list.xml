@@ -27,15 +27,17 @@
         android:background="@color/colorPrimaryDark">
 
         <EditText
+            android:id="@+id/edit_search"
             android:layout_width="match_parent"
-            android:inputType="text"
             android:layout_height="36dp"
             android:layout_margin="7dp"
+            android:autofillHints=""
             android:background="@drawable/editext_background_rounded"
             android:gravity="center"
             android:hint="@string/hint_search"
-            android:textSize="16sp"
-            android:autofillHints="" />
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:textSize="16sp" />
     </FrameLayout>
 
     <FrameLayout

@@ -12,21 +12,16 @@ import kotlinx.android.synthetic.main.item_recycler_breweries_list.view.*
 class MyAdapter() : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
     class MyViewHolder(val recyclerItem: View) : RecyclerView.ViewHolder(recyclerItem)
 
-    private var myDataset: List<Brewery> = emptyList()
+    private var myData: List<Brewery> = emptyList()
 
-    // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val textView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_recycler_breweries_list, parent, false)
         return MyViewHolder(textView)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val brewery = myDataset[position]
+        val brewery = myData[position]
         val recyclerItem = holder.recyclerItem
 
         if (brewery.name.isNullOrEmpty()) {
@@ -73,7 +68,7 @@ class MyAdapter() : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
         if (brewery.latitude != null && brewery.longitude != null) {
             recyclerItem.btn_show_on_map.setOnClickListener {
-                var intentString = "geo:" + brewery.latitude + "," + brewery.longitude + null
+                var intentString = "geo:" + brewery.latitude + "," + brewery.longitude
                 if (!brewery.name.isNullOrEmpty()) {
                     intentString += "?q=" + brewery.name
                 }
@@ -90,12 +85,11 @@ class MyAdapter() : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return myDataset.size
+        return myData.size
     }
 
     fun setData(breweryList: List<Brewery>) {
-        myDataset = breweryList
+        myData = breweryList
         notifyDataSetChanged()
     }
-
 }

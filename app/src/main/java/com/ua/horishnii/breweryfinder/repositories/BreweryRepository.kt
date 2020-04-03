@@ -13,6 +13,16 @@ import timber.log.Timber
 
 object BreweryRepository {
 
+    fun getBreweriesLiveData(): LiveData<List<Brewery>> {
+        syncBreweriesListWithApi()
+        return BreweryDatabase.sAppDatabase.getBreweryDao().getBreweriesLiveData()
+    }
+
+    fun getBreweriesByNameLiveData(name: String): LiveData<List<Brewery>> {
+        syncBreweriesByNameWithApi(name)
+        return BreweryDatabase.sAppDatabase.getBreweryDao().getBreweriesByName("%$name%")
+    }
+
     fun syncBreweriesListWithApi() {
         BreweryFinderApp.sOpenBreweryApi?.getBreweries()?.enqueue(object : Callback<List<Brewery>> {
 
@@ -28,7 +38,18 @@ object BreweryRepository {
         })
     }
 
-    fun getBreweriesLiveData(): LiveData<List<Brewery>> {
-        return BreweryDatabase.sAppDatabase.getBreweryDao().getBreweriesLiveData()
+    fun syncBreweriesByNameWithApi(name: String) {
+        BreweryFinderApp.sOpenBreweryApi?.getBreweriesByName(name)
+            ?.enqueue(object : Callback<List<Brewery>> {
+                override fun onFailure(call: Call<List<Brewery>>, t: Throwable) {
+                    Timber.d(t)
+                }
+
+                override fun onResponse(call: Call<List<Brewery>>, response: Response<List<Brewery>>) {
+                    GlobalScope.launch {
+                        BreweryDatabase.sAppDatabase.getBreweryDao().insertAll(response.body())
+                    }
+                }
+            })
     }
 }

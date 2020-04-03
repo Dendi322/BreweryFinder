@@ -13,4 +13,7 @@ interface BreweryDao {
 
     @Query("SELECT * FROM brewery ORDER BY name")
     fun getBreweriesLiveData(): LiveData<List<Brewery>>
+
+    @Query("SELECT * FROM brewery WHERE name LIKE :name ORDER by name")
+    fun getBreweriesByName(name:String):LiveData<List<Brewery>>
 }

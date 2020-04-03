@@ -1,14 +1,11 @@
 package com.ua.horishnii.breweryfinder.db
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
+import androidx.room.*
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
-@Entity(tableName = "brewery")
+@Entity(tableName = "brewery", indices = [Index("name")])
 data class Brewery(
 
     @SerializedName("id")

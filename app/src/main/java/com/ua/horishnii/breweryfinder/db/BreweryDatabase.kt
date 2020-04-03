@@ -6,14 +6,15 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.ua.horishnii.breweryfinder.BreweryFinderApp
 
-@Database(entities = [Brewery::class], version = 1)
+@Database(entities = [Brewery::class], version = 1, exportSchema = false)
 @TypeConverters(TagListConverters::class)
 abstract class BreweryDatabase : RoomDatabase() {
-    companion object{
+    companion object {
         val sAppDatabase = Room.databaseBuilder(
             BreweryFinderApp.sAppContext,
             BreweryDatabase::class.java, "brewery_db"
         ).build()
     }
-    abstract fun getBreweryDao():BreweryDao
+
+    abstract fun getBreweryDao(): BreweryDao
 }

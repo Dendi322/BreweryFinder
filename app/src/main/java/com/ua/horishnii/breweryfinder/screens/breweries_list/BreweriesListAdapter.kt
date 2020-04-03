@@ -9,7 +9,7 @@ import com.ua.horishnii.breweryfinder.db.Brewery
 import kotlinx.android.synthetic.main.item_recycler_breweries_list.view.*
 
 
-class MyAdapter() : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class BreweriesListAdapter() : RecyclerView.Adapter<BreweriesListAdapter.MyViewHolder>() {
     class MyViewHolder(val recyclerItem: View) : RecyclerView.ViewHolder(recyclerItem)
 
     private var myData: List<Brewery> = emptyList()

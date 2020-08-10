@@ -85,12 +85,12 @@ class TagListConverters {
     private val separator = " "
 
     @TypeConverter
-    fun fromTag(tagList: List<String?>): String {
-        return tagList.joinToString(separator)
+    fun fromTag(tagList: List<String?>?): String? {
+        return tagList?.joinToString(separator)
     }
 
     @TypeConverter
-    fun toTag(data: String): List<String> {
-        return data.split(separator)
+    fun toTag(data: String?): List<String>? {
+        return data?.split(separator)
     }
 }

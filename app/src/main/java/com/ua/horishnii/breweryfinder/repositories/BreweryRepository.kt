@@ -14,12 +14,10 @@ import timber.log.Timber
 object BreweryRepository {
 
     fun getBreweriesLiveData(): LiveData<List<Brewery>> {
-        syncBreweriesListWithApi()
         return BreweryDatabase.sAppDatabase.getBreweryDao().getBreweriesLiveData()
     }
 
     fun getBreweriesByNameLiveData(name: String): LiveData<List<Brewery>> {
-        syncBreweriesByNameWithApi(name)
         return BreweryDatabase.sAppDatabase.getBreweryDao().getBreweriesByName("%$name%")
     }
 

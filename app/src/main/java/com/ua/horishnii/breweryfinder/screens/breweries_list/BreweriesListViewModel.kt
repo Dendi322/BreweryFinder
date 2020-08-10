@@ -9,13 +9,11 @@ class BreweriesListViewModel : ViewModel() {
 
     init {
         model.breweryListLiveData =  BreweryRepository.getBreweriesLiveData()
-    }
-
-    fun syncBreweriesListWithApi() {
         BreweryRepository.syncBreweriesListWithApi()
     }
 
     fun getBreweriesByName(name:String) {
         model.lastSearchResults = BreweryRepository.getBreweriesByNameLiveData(name)
+        BreweryRepository.syncBreweriesByNameWithApi(name)
     }
 }

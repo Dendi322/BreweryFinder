@@ -23,7 +23,20 @@ class BreweriesListAdapter() : RecyclerView.Adapter<BreweriesListAdapter.MyViewH
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val brewery = myData[position]
         val recyclerItem = holder.recyclerItem
+        setupRecyclerItemFields(recyclerItem, brewery)
+        setupShowOnMapBtn(recyclerItem, brewery)
+    }
 
+    override fun getItemCount(): Int {
+        return myData.size
+    }
+
+    fun setData(breweryList: List<Brewery>) {
+        myData = breweryList
+        notifyDataSetChanged()
+    }
+
+    private fun setupRecyclerItemFields(recyclerItem: View, brewery: Brewery) {
         if (brewery.name.isNullOrEmpty()) {
             recyclerItem.text_name.visibility = View.GONE
         } else {
@@ -65,31 +78,28 @@ class BreweriesListAdapter() : RecyclerView.Adapter<BreweriesListAdapter.MyViewH
         } else {
             recyclerItem.text_street_value.text = brewery.street
         }
+    }
 
-        if (brewery.latitude != null && brewery.longitude != null) {
-            recyclerItem.btn_show_on_map.setOnClickListener {
-                var intentString = "geo:" + brewery.latitude + "," + brewery.longitude
-                if (!brewery.name.isNullOrEmpty()) {
-                    intentString += "?q=" + brewery.name
-                }
-                val gmmIntentUri: Uri = Uri.parse(intentString)
-                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-                mapIntent.setPackage("com.google.android.apps.maps")
-                if (mapIntent.resolveActivity(recyclerItem.context.packageManager) != null) {
-                    recyclerItem.context.startActivity(mapIntent)
-                }
+    private fun setupShowOnMapBtn(recyclerItem: View, brewery: Brewery) {
+        recyclerItem.btn_show_on_map.setOnClickListener {
+            val googleMapQuery = "geo:" +
+                    brewery.latitude +
+                    ", " +
+                    brewery.longitude +
+                    "?q=" +
+                    brewery.street +
+                    ", " +
+                    brewery.city +
+                    ", " +
+                    brewery.state +
+                    ", " +
+                    brewery.country
+            val gmmIntentUri: Uri = Uri.parse(googleMapQuery)
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            if (mapIntent.resolveActivity(recyclerItem.context.packageManager) != null) {
+                recyclerItem.context.startActivity(mapIntent)
             }
-        } else {
-            recyclerItem.btn_show_on_map.visibility = View.GONE
         }
-    }
-
-    override fun getItemCount(): Int {
-        return myData.size
-    }
-
-    fun setData(breweryList: List<Brewery>) {
-        myData = breweryList
-        notifyDataSetChanged()
     }
 }

@@ -32,8 +32,6 @@ class BreweriesListActivity : AppCompatActivity() {
             layoutManager = viewManager
             adapter = viewAdapter
         }
-        mViewModel.model.breweryListLiveData?.observe(this, Observer((viewAdapter as BreweriesListAdapter)::setData))
-
         edit_search.setOnEditorActionListener(OnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 performSearchByName(edit_search.text.toString())
@@ -41,12 +39,14 @@ class BreweriesListActivity : AppCompatActivity() {
             }
             false
         })
+        performSearchByName("")
     }
 
     private fun performSearchByName(name: String) {
-        mViewModel.model.breweryListLiveData?.removeObservers(this)
         mViewModel.model.lastSearchResults?.removeObservers(this)
         mViewModel.getBreweriesByName(name)
-        mViewModel.model.lastSearchResults?.observe(this, Observer((viewAdapter as BreweriesListAdapter)::setData))
+        mViewModel.model.lastSearchResults?.observe(
+            this, Observer((viewAdapter as BreweriesListAdapter)::setData)
+        )
     }
 }

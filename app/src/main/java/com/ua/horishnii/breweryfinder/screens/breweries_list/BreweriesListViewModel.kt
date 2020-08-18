@@ -7,11 +7,6 @@ import com.ua.horishnii.breweryfinder.repositories.BreweryRepository
 class BreweriesListViewModel : ViewModel() {
     val model:BreweriesListModel = BreweriesListModel()
 
-    init {
-        model.breweryListLiveData =  BreweryRepository.getBreweriesLiveData()
-        BreweryRepository.syncBreweriesListWithApi()
-    }
-
     fun getBreweriesByName(name:String) {
         model.lastSearchResults = BreweryRepository.getBreweriesByNameLiveData(name)
         BreweryRepository.syncBreweriesByNameWithApi(name)
